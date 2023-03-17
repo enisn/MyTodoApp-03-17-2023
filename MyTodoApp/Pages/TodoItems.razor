@@ -1,0 +1,39 @@
+﻿@page "/todo-items"
+
+<Card>
+    <CardHeader>
+        <CardTitle>
+            Todo Items
+        </CardTitle>
+    </CardHeader>
+    <CardBody>
+        <div class="row">
+            <div class="col-8">
+                <div class="input-group">
+                    <InputText @bind-Value="todoItemText" class="form-control" />
+                </div>
+            </div>
+            <div class="col-4">
+                <Button @onclick="SubmitAsync" >Submit</Button>
+            </div>
+        </div>
+    </CardBody>
+</Card>
+
+<Card>
+    <CardBody>
+        <div class="row">
+            
+            @foreach (var item in todoItems)
+            {
+                <div class="col-8">
+                    @item.Text
+                </div>
+                <div class="col-4">
+                    <Button @onclick="@(()=>DeleteAsync(item.Id))" Color="Color.Danger">🗑️</Button>
+                </div>
+                <hr />
+            }
+        </div>
+    </CardBody>
+</Card>
